@@ -94,4 +94,4 @@ writei64:
         pop     %rbp
         ret
         .section        .string, "aMS", @progbits, 1
-.L6:    .asciz  "%lld"
+.L6:    .asciz  "%lld\n"
