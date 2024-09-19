@@ -1,15 +1,12 @@
-# Указываем компилятор и флаги
-CC = gcc
-CFLAGS = -m32
+# Основное правило для сборки
+%_build: %.S simpleio_x86_64.S
+	gcc -no-pie -o $@ $< simpleio_x86_64.S
 
-# Дополнительный исходный файл
-SRCS = simpleio_i686.S
+# Правило для запуска цели
+%_run: %_build
+	LD_PRELOAD=/opt/glibc-2.40/lib/libc.so.6 /opt/glibc-2.40/lib/ld-linux-x86-64.so.2 ./$<
 
-# Правило для сборки исполняемого файла по исходному файлу .S
-%: %.S $(SRCS)
-	$(CC) $(CFLAGS) $< $(SRCS) -o $@
-
-# Очистка скомпилированных файлов
+# Очистка сгенерированных файлов
 clean:
-	rm -f test prog
+	rm -f $(basename $(wildcard *.S))
 

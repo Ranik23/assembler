@@ -35,8 +35,8 @@ writei32:
         call    printf
         pop     %rbp
         ret
-        .section    .string, "aMS", @progbits, 1
-.L3:    .asciz  "%d"
+        .section    string, "aMS", @progbits, 1
+.L3:    .asciz  "%d\n"
 
         .text
         .align  16
