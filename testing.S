@@ -8,10 +8,16 @@ y: .int 44
 
 main:
   
-  inc dword ptr [rip + value]
-
-  mov edi, [rip + value]
+  push 17
   
+  mov rdi, [rsp]
+  
+  call writei64
+
+  pop rax
+  
+  mov rdi, rax
+
   call writei64
 
   call finish
