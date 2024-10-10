@@ -6,7 +6,4 @@
 %_run: %_build
 	LD_PRELOAD=/opt/glibc-2.40/lib/libc.so.6 /opt/glibc-2.40/lib/ld-linux-x86-64.so.2 ./$<
 
-# Очистка сгенерированных файлов
-clean:
-	rm -f $(basename $(wildcard *.S))
 

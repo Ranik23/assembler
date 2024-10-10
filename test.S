@@ -1,22 +1,18 @@
-    .text
-    .intel_syntax noprefix
-    .global main, printout
+.intel_syntax noprefix
+.global main
 
-printout:
-    
-  mov rdi, rax
-
-  call writei64
-
-  call finish
 
 main:
 
-  call readi64
+  lea rax, [var] 
 
-  mov r12, rax
+  mov rdi, [rax]
   
-  call readi64
+  call writei64
+  
+  call finish
 
-  jmp process
+.data
+  var:
+    .byte 1000
 
